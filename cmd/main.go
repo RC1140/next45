@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -30,7 +31,10 @@ func ParseDataFile(dataFile io.Reader) (string, string, string) {
 }
 
 func main() {
-	d, err := os.Open(os.Args[1])
+	datFileLocation := flag.String("data", "cmd/dat", "Data file location")
+	flag.Parse()
+
+	d, err := os.Open(*datFileLocation)
 	if err != nil {
 		panic(err)
 	}
