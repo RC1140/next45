@@ -1,6 +1,8 @@
 # Next45 Project Mars
 Demo Project For Next45
 
+Build and Tests [![CircleCI](https://circleci.com/gh/RC1140/next45.svg?style=svg)](https://circleci.com/gh/RC1140/next45)
+
 ## Run instructions
 
 ### Requirements
