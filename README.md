@@ -35,3 +35,7 @@ the rovers movement and map setup. The cmd package handles IO and passing it to 
 
 Each of the structs has their own test file which ensures that there is a clean relationship
 between the tests and the functions they cover.
+
+The current tests cover the spec and add a few extra statements to cover basic errors but it doesnt 
+try to cover every possible way the application could be abused. With a tigher spec, functionality 
+like the map size and init location could be handleded in a cleaner fashion
