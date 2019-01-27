@@ -19,11 +19,12 @@ Demo Project For Next45
 
 If your go bin is part of your path simply run
 
-- `projectmars <path to datafile>`
+- `projectmars -data <path to datafile>`
 
 
-e.g `projectmars $GOPATH/src/github.com/rc1140/next45/cmd/dat`
+e.g `projectmars -data $GOPATH/src/github.com/rc1140/next45/cmd/dat`
 
+The params for the application can be found by running projectmars -h
 Note an example data file has been included in the project (next45/cmd/dat)
 
 ## Project structure
