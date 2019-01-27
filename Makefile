@@ -7,3 +7,6 @@ install: cmd/main.go
 
 uninstall:
 	rm $(GOPATH)/bin/projectmars
+
+test:
+	go test -timeout 30s github.com/rc1140/next45/projectmars

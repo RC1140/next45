@@ -20,13 +20,12 @@ func TestRover_MoveClockwise(t *testing.T) {
 		{"RM", []int{1, 1}}, //turn and move north
 	}
 
-	m := ProjectMars.SurveyMap{}
+	m := SurveyMap{}
 	m.ParseAndSetupMap("8 10")
-	r := ProjectMars.Rover{}
+	r := Rover{}
 	r.SurveyMap = m
 	r.ParseAndSetupStartLocation("11 E")
 
-	// testDirections := []string{"M", "R"}
 	for _, tc := range flagtests {
 		r.Commands = tc.in
 		r.ExecuteCommands()
@@ -49,13 +48,12 @@ func TestRover_CantMoveOffMap(t *testing.T) {
 		{"M", []int{0, 0}},  //Move east (based on init)
 	}
 
-	m := ProjectMars.SurveyMap{}
+	m := SurveyMap{}
 	m.ParseAndSetupMap("8 10")
-	r := ProjectMars.Rover{}
+	r := Rover{}
 	r.SurveyMap = m
 	r.ParseAndSetupStartLocation("11 W")
 
-	// testDirections := []string{"M", "R"}
 	for _, tc := range flagtests {
 		r.Commands = tc.in
 		r.ExecuteCommands()
@@ -80,13 +78,12 @@ func TestRover_MoveCounterClockwise(t *testing.T) {
 		{"LM", []int{1, 1}}, //turn and move north to  the original postition
 	}
 
-	m := ProjectMars.SurveyMap{}
+	m := SurveyMap{}
 	m.ParseAndSetupMap("8 10")
-	r := ProjectMars.Rover{}
+	r := Rover{}
 	r.SurveyMap = m
 	r.ParseAndSetupStartLocation("11 E")
 
-	// testDirections := []string{"M", "R"}
 	for _, tc := range flagtests {
 		r.Commands = tc.in
 		r.ExecuteCommands()
@@ -99,7 +96,7 @@ func TestRover_MoveCounterClockwise(t *testing.T) {
 }
 
 func TestRover_ParseValidStartLocation(t *testing.T) {
-	r := ProjectMars.Rover{}
+	r := Rover{}
 	r.ParseAndSetupStartLocation("11 W")
 	assert.Equal(t, 1, r.CurrentLocation.X)
 	assert.Equal(t, 1, r.CurrentLocation.Y)
@@ -107,22 +104,22 @@ func TestRover_ParseValidStartLocation(t *testing.T) {
 }
 
 func TestRover_ParseInValidStartHeading(t *testing.T) {
-	r := ProjectMars.Rover{}
+	r := Rover{}
 	assert.Panics(t, func() { r.ParseAndSetupStartLocation("11 X") }, "The heading should not have parsed")
 }
 
 func TestRover_ParseInValidStartLocation(t *testing.T) {
-	r := ProjectMars.Rover{}
+	r := Rover{}
 	assert.Panics(t, func() { r.ParseAndSetupStartLocation("112 X") }, "The location should not have parsed")
 }
 
 func TestRover_ParseInValidValueStartLocation(t *testing.T) {
-	r := ProjectMars.Rover{}
+	r := Rover{}
 	assert.Panics(t, func() { r.ParseAndSetupStartLocation("AA X") }, "The location should not have parsed")
 	assert.Panics(t, func() { r.ParseAndSetupStartLocation("1A X") }, "The location should not have parsed")
 }
 func TestRover_CanPrintCurrentLocation(t *testing.T) {
-	r := ProjectMars.Rover{}
+	r := Rover{}
 	r.ParseAndSetupStartLocation("11 W")
 
 	var res = "Current Location : X : 1 , Y 1 \n"
@@ -131,7 +128,7 @@ func TestRover_CanPrintCurrentLocation(t *testing.T) {
 }
 
 func TestCoOrds_CanPrintLocation(t *testing.T) {
-	c := ProjectMars.CoOrd{X: 1, Y: 1}
+	c := CoOrd{X: 1, Y: 1}
 
 	var res = "X : 1 , Y 1 \n"
 	assert.Equal(t, res, c.String())
